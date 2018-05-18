@@ -42,9 +42,4 @@ hist(Petals, breaks = (length(Petals)/5))
 
 # Viewing the histogram you can see a positive skew to the data
 
-# Find the most frequent variable
-tt = table(Petals)
-MostFreq <- names(tt[tt==max(tt)])
-print(paste0("The most frequent petal count is: ", MostFreq))
-
 # Most flowers have around 15 petals
