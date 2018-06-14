@@ -1,0 +1,68 @@
+---
+title: "Lesson 2 Visualization"
+author: "Jolynn Schmidt"
+date: "June 13, 2018"
+output: html_document
+---
+
+```{r}
+Petals <- c(15, 16, 17,
+            16, 21, 22,
+            15, 16, 15,
+            17, 16, 22,
+            14, 13, 14,
+            14, 15, 15,
+            14, 15, 16,
+            10, 19, 15,
+            15, 22, 24,
+            25, 15, 16)
+```
+
+#### Frequency
+Now we will find the most frequest petal.
+
+```{r}
+tt = table(Petals)
+MostFreq <- names(tt[tt==max(tt)])
+print(paste0("The most frequent petal count is: ", MostFreq))
+```
+
+```{r}
+# Find the frequency of flowers with 15 petals
+
+PetalFreq <- length(which(Petals==15))
+print(paste0("The frequency of flowers with 15 petals is: ", PetalFreq))
+```
+
+####Proportions
+```{r}
+# Find the proportion of flowers with 15 petals
+
+TotalSample <- length(Petals)
+PetalProp <- PetalFreq/TotalSample
+print(paste0("The proportion of flowers with 15 petals is: ", PetalProp))
+```
+####Percentage
+
+```{r}
+# Find the percentage of flowers with 15 petals
+
+PetalPerc <- PetalProp * 100
+print(paste0("The percentage of flowers with 15 petals is: ", PetalPerc, "%"))
+```
+
+####Histogram
+
+Bin size of 2
+```{r}
+# Create a historgram with a bin size of 2
+hist(Petals, breaks = (length(Petals)/2))
+```
+
+Bin size of 5
+
+```{r}
+# Create a historgram with a bin size of 5
+hist(Petals, breaks = (length(Petals)/5))
+```
+
