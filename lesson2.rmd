@@ -5,6 +5,10 @@ date: "June 13, 2018"
 output: html_document
 ---
 
+In this exercise we will start by looking at the characteristics of our dataset. All definitions and data come from the original Udacity lesson and can be found [here.](https://www.udacity.com/api/nodes/1480558581/supplemental_media/lesson2pdf/download "Lesson2.pdf")
+
+#### Data
+We start by assigning our data to Petals, a list of petal counts from flowers.
 ```{r}
 Petals <- c(15, 16, 17,
             16, 21, 22,
@@ -19,22 +23,26 @@ Petals <- c(15, 16, 17,
 ```
 
 #### Frequency
-Now we will find the most frequest petal.
+The frequency of a data set is the number of times a certain outcome occurs.
 
 ```{r}
-tt = table(Petals)
-MostFreq <- names(tt[tt==max(tt)])
+# Find the most frequent petal count.
+# to do this we create a table from Petals, sort it in decreasing order, and get the name of the first item.
+
+MostFreq <- names(sort(table(Petals),decreasing=TRUE)[1])
 print(paste0("The most frequent petal count is: ", MostFreq))
 ```
 
 ```{r}
-# Find the frequency of flowers with 15 petals
-
-PetalFreq <- length(which(Petals==15))
+# Find the frequency of flowers with 15 petals.
+# We can use the same method as above but without the names
+PetalFreq <- sort(table(Petals),decreasing=TRUE)[1]
 print(paste0("The frequency of flowers with 15 petals is: ", PetalFreq))
 ```
 
 ####Proportions
+A proportion is the fraction of counts over the total sample.
+
 ```{r}
 # Find the proportion of flowers with 15 petals
 
@@ -43,6 +51,7 @@ PetalProp <- PetalFreq/TotalSample
 print(paste0("The proportion of flowers with 15 petals is: ", PetalProp))
 ```
 ####Percentage
+A proportion can be turned into a percentage by multiplying the proportion by 100.
 
 ```{r}
 # Find the percentage of flowers with 15 petals
@@ -52,17 +61,18 @@ print(paste0("The percentage of flowers with 15 petals is: ", PetalPerc, "%"))
 ```
 
 ####Histogram
+A histogram is a graphical representation of the distribution of data, discrete intervals (bins) are decided upon to form widths for our boxes.
 
-Bin size of 2
 ```{r}
 # Create a historgram with a bin size of 2
 hist(Petals, breaks = (length(Petals)/2))
 ```
-
-Bin size of 5
 
 ```{r}
 # Create a historgram with a bin size of 5
 hist(Petals, breaks = (length(Petals)/5))
 ```
 
+#### Skew
+Positive Skew. A positive skew is when outliers are present along the right most end of the distribution
+Negative Skew. A negative skew is when outliers are present along the left most end of the distribution
