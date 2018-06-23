@@ -1,0 +1,11 @@
+---
+title: "lesson6"
+author: "Jolynn Schmidt"
+date: "June 23, 2018"
+output: html_document
+---
+
+```{r}
+my_data <- rnorm(100, mean = 50, sd = 1)
+hist(my_data)
+```
