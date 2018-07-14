@@ -301,3 +301,51 @@ WHERE a.name LIKE 'Walmart'
 GROUP BY 1, 2
 ORDER BY 3 DESC
 limit 1
+
+
+
+
+
+SELECT a.name, SUM(o.total_amt_usd) total_sales,
+		CASE WHEN SUM(o.total_amt_usd) > 200000 THEN 'over 200k'
+			 WHEN SUM(o.total_amt_usd) > 100000 AND  SUM(o.total_amt_usd) < 200000 THEN '100k - 200k'
+			 ELSE 'Under 100k' END AS total_range
+FROM accounts a
+JOIN orders o
+ON o.account_id = a.id
+GROUP BY 1
+
+SELECT a.name, SUM(o.total_amt_usd) total_sales,
+		CASE WHEN SUM(o.total_amt_usd) > 200000 THEN 'over 200k'
+			 WHEN SUM(o.total_amt_usd) > 100000 AND SUM(o.total_amt_usd)  < 200000 THEN '100k - 200k'
+			 ELSE 'Under 100k' END AS total_range
+FROM accounts a
+JOIN orders o
+ON o.account_id = a.id
+WHERE o.occurred_at > '2015-12-31'
+GROUP BY 1
+ORDER BY 2 DESC
+
+
+SELECT s.name, COUNT(*), SUM(o.total_amt_usd),
+    CASE WHEN COUNT(*) > 200 OR SUM(o.total_amt_usd) > 750000 THEN 'top'
+         WHEN COUNT(*) > 150 OR SUM(o.total_amt_usd) > 500000 THEN 'middle'
+         ELSE 'Low' END AS top_sales
+FROM orders o
+JOIN accounts a
+ON o.account_id = a.id
+JOIN sales_reps s
+ON a.sales_rep_id = s.id
+GROUP BY 1
+
+SELECT s.name, COUNT(*), SUM(o.total_amt_usd),
+    CASE WHEN COUNT(*) > 200 OR SUM(o.total_amt_usd) > 750000 THEN 'top'
+         WHEN COUNT(*) > 150 OR SUM(o.total_amt_usd) > 500000 THEN 'middle'
+         ELSE 'Low' END AS top_sales
+FROM orders o
+JOIN accounts a
+ON o.account_id = a.id
+JOIN sales_reps s
+ON a.sales_rep_id = s.id
+GROUP BY 1
+ORDER BY 3 DESC
