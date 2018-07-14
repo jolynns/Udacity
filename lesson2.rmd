@@ -67,22 +67,22 @@ print(paste0("The percentage of flowers with 15 petals is: ", PetalPerc, "%"))
 
 
 ###Histogram
-A histogram is a graphical representation of the distribution of data, discrete intervals (bins) are decided upon to form widths for our boxes. R has the hist() function to make basic historgrams. Here are some very simple examples.
+A histogram is a graphical representation of the distribution of data, discrete intervals (bins) are decided upon to form widths for our boxes. R has the hist() function to make basic histograms. Here are some very simple examples.
 
 ```{r}
-# Create a historgram with a bin size of 2
-hist(Petals, breaks = (length(Petals)/2))
+# Create a histogram with a bin size of 2
+hist(Petals, breaks = (length(Petals)/2), col = "blue")
 ```
 
 ```{r}
-# Create a historgram with a bin size of 5
+# Create a histogram with a bin size of 5
 bins <- c(10,15,20,25,30)
 #hist(Petals, breaks = (length(Petals)/5))
-hist(Petals, breaks = bins)
+hist(Petals, breaks = bins, col = "orange")
 ```
 
 
 ###Skew
-Positive Skew. A positive skew is when outliers are present along the right most end of the distribution. The histogram for Petals is an example of a positive skew
+**Positive Skew** - A positive skew is when outliers are present along the right most end of the distribution. The histogram for Petals is an example of a positive skew
 
-Negative Skew. A negative skew is when outliers are present along the left most end of the distribution
+**Negative Skew** - A negative skew is when outliers are present along the left most end of the distribution
